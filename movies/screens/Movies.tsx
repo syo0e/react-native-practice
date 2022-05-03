@@ -40,7 +40,6 @@ const Title = styled.Text`
   margin-top: 7px;
   margin-bottom: 5px;
 `;
-
 const Votes = styled.Text`
   color: rgba(255, 255, 255, 0.8);
   font-size: 10px;
@@ -56,7 +55,7 @@ const HMovie = styled.View`
   flex-direction: row;
 `;
 
-const Hcolumn = styled.View`
+const HColumn = styled.View`
   margin-left: 15px;
   width: 80%;
 `;
@@ -72,7 +71,6 @@ const Release = styled.Text`
   font-size: 12px;
   margin-vertical: 10px;
 `;
-
 const ComingSoonTitle = styled(ListTitle)`
   margin-bottom: 30px;
 `;
@@ -154,7 +152,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
             <Movie key={movie.id}>
               <Poster path={movie.poster_path} />
               <Title>
-                {movie.original_title.slice(0.13)}
+                {movie.original_title.slice(0, 13)}
                 {movie.original_title.length > 13 ? "..." : null}
               </Title>
               <Votes>
@@ -170,7 +168,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
       {upcoming.map((movie) => (
         <HMovie key={movie.id}>
           <Poster path={movie.poster_path} />
-          <Hcolumn>
+          <HColumn>
             <Title>{movie.original_title}</Title>
             <Release>
               {new Date(movie.release_date).toLocaleDateString("ko", {
@@ -184,7 +182,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
                 ? `${movie.overview.slice(0, 140)}...`
                 : movie.overview}
             </Overview>
-          </Hcolumn>
+          </HColumn>
         </HMovie>
       ))}
     </Container>
