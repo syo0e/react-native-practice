@@ -87,6 +87,8 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
     await getData();
     setRefreshing(false);
   };
+
+  console.log(trending);
   return loading ? (
     <Loader>
       <ActivityIndicator />
